@@ -1,0 +1,16 @@
+{
+  "title": "Customizable Freeplay Menu [V-Slice]",
+  "description": "Gives some more personality to FNF's freeplay menu.",
+  "id": "greeny-dynamicfreeplay",
+  "homepage": "https://gamebanana.com/mods/600193",
+  "contributors": [
+    {
+      "name": "Greeny",
+      "role": "Creator",
+      "url": "https://gamebanana.com/members/1895178"
+    }
+  ],
+  "api_version": "0.8.4",
+  "mod_version": "1.0.0",
+  "license": "Apache-2.0"
+}
