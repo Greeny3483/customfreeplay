@@ -3,18 +3,9 @@ import funkin.modding.module.Module;
 import funkin.play.PlayState;
 import funkin.modding.module.ModuleHandler;
 import funkin.graphics.FunkinSprite;
-import funkin.Paths;
 import flixel.util.FlxTimer;
-import funkin.Assets;
 
 import funkin.modding.PolymodErrorHandler;
-import funkin.modding.PolymodHandler;
-import funkin.Conductor;
-import funkin.graphics.video.FunkinVideoSprite;
-import funkin.play.Countdown;
-import funkin.data.event.SongEventRegistry;
-import funkin.data.song.SongEventDataRaw;
-import funkin.modding.events.SongEventScriptEvent;
 import haxe.Json;
 import flixel.FlxG;
 import funkin.save.Save;
@@ -31,35 +22,38 @@ import funkin.save.Save;
 
 import flixel.util.FlxColor;
 
-class Ahem_BG extends Module {
+class CustomFreeplayBG extends Module {
     var currentBgName:String = "";
     var fadeSprite:FlxSprite = null;
 
     function new() {
-        super("ahem-bg", 40, {state: FreeplayState});
-        Ahem.jsonPath = Paths.json("ahem");
-        if (Assets.exists(Ahem.jsonPath)) {
-            Ahem.jsonData = Json.parse(Assets.getText(Ahem.jsonPath));
+        super("customFreeplayBG", 40, {state: FreeplayState});
+        CustomFreeplayColors.jsonPath = Paths.json("freeplay-bg-color");
+        if (Assets.exists(CustomFreeplayColors.jsonPath)) {
+            CustomFreeplayColors.jsonData = Json.parse(Assets.getText(CustomFreeplayColors.jsonPath));
         }
     }
 
     override function onCapsuleSelected(event:CapsuleScriptEvent):Void {
         doDynamicBG = Save.instance.modOptions["dynamicBG"];
-        if (!doDynamicBG || event.capsule == null || event.capsule.freeplayData == null || Ahem.jsonData == null) return;
+        if (!doDynamicBG || event.capsule == null || event.capsule.freeplayData == null || CustomFreeplayColors.jsonData == null) return;
 
         var songId = event.capsule.freeplayData.songId;
         var songTitle = event.capsule.freeplayData.data.songName;
         var targetBg = "freeplayBGweek1-bf";
 
-        for (songs in Ahem.jsonData.songs) {
-            Ahem.songsArray = songs.songNames;
-            for (curSong in Ahem.songsArray) {
-                if (Ahem.songsArray.contains(songId) || Ahem.songsArray.contains(songTitle)) {
+        for (songs in CustomFreeplayColors.jsonData.songs) {
+            CustomFreeplayColors.songsArray = songs.songNames;
+            for (curSong in CustomFreeplayColors.songsArray) {
+                if (CustomFreeplayColors.songsArray.contains(songId) || CustomFreeplayColors.songsArray.contains(songTitle)) {
                     targetBg = songs.image;
                     if (currentBgName != targetBg) {
                         var previousBg = currentBgName == "" ? "freeplayBGweek1-bf" : currentBgName;
                         currentBgName = targetBg;
                         updateBackground(targetBg, previousBg);
+                        //new FlxTimer().start(2, function() {
+                        //    updateBackground(targetBg, previousBg);
+                        //});
                     }
                 }
             }

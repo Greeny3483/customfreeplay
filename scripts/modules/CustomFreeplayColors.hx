@@ -1,30 +1,14 @@
-import funkin.modding.events.ScriptEvent;
 import funkin.modding.module.Module;
-import funkin.play.PlayState;
-import funkin.modding.module.ModuleHandler;
 import funkin.graphics.FunkinSprite;
-import funkin.Paths;
-import flixel.util.FlxTimer;
-import funkin.Assets;
 
 import funkin.modding.PolymodErrorHandler;
-import funkin.modding.PolymodHandler;
-import funkin.Conductor;
-import funkin.graphics.video.FunkinVideoSprite;
-import funkin.play.Countdown;
-import funkin.data.event.SongEventRegistry;
-import funkin.data.song.SongEventDataRaw;
-import funkin.modding.events.SongEventScriptEvent;
 import haxe.Json;
 import flixel.FlxG;
-import funkin.save.Save;
-import funkin.Preferences;
-import funkin.util.Constants;
 import funkin.ui.freeplay.FreeplayState;
 
 import flixel.util.FlxColor;
 
-class Ahem extends Module {
+class CustomFreeplayColors extends Module {
     static var jsonPath;
     static var jsonData:Dynamic;
     static var songsArray:Array;
@@ -37,54 +21,13 @@ class Ahem extends Module {
     var targetOrange:FlxColor = 0xFFFEDA00;
     var currentOrange:FlxColor = 0xFFFEDA00;
 
-    public static var songColors:Map<String, FlxColor> = [
-        "bopeebo" => 0xFFAF66CE,
-        "fresh" => 0xFFAF66CE,
-        "dadbattle" => 0xFFAF66CE,
-        "spookeez" => 0xFFD57E00,
-        "south" => 0xFFD57E00,
-        "monster" => 0xFFB50012,
-        "pico" => 0xFFB7D855,
-        "philly-nice" => 0xFFB7D855,
-        "blammed" => 0xFFB7D855,
-        "satin-panties" => 0xFFD8558E,
-        "high" => 0xFFD8558E,
-        "milf" => 0xFFD8558E,
-        "cocoa" => 0xFFA5004D,
-        "eggnog" => 0xFFA5004D,
-        "winter-horrorland" => 0xFFB50012,
-        "senpai" => 0xFFFFAA6F,
-        "roses" => 0xFFFFAA6F,
-        "thorns" => 0xFFFF3C6E,
-        "ugh" => 0xFFE1E1E1,
-        "guns" => 0xFFE1E1E1,
-        "stress" => 0xFFE1E1E1,
-        "darnell" => 0xFF5A456C,
-        "lit-up" => 0xFF5A456C,
-        "2hot" => 0xFF5A456C,
-        "blazin" => 0xFF5A456C
-    ];
-
     function new() {
-        super("ahem", 30, {state: FreeplayState});
+        super("customFreeplayColors", 30, {state: FreeplayState});
         jsonPath = Paths.json("ahem");
         if (Assets.exists(jsonPath)) {
             jsonData = Json.parse(Assets.getText(jsonPath));
         }
     }
-
-    //function getConfigForCurrentSong():Dynamic {
-    //    for (cfg in songsConfig) {
-    //        if (cfg.songName == FreeplayState.FreeplaySongData.instance.currentChart.songName || cfg.songName == PlayState.instance.currentSong.id) {
-    //            return cfg; // checks whether songName is the song's in-game name/title or the song's internal name
-    //        }
-    //    }
-    //    return;
-    //}
-
-    //override function onStateChangeEnd() {
-
-    //}
 
     override function onCapsuleSelected(event:CapsuleScriptEvent):Void {
         super.onCapsuleSelected(event);
@@ -99,6 +42,8 @@ class Ahem extends Module {
             songsArray = songs.songNames;
             for (curSong in songsArray) {
                 if (songsArray.contains(songId) || songsArray.contains(songTitle)) {
+                    // Song's title doesn't work so...
+                    // TODO: Support variations
                     baseColor = FlxColor.fromString(songs.color);
                 }
             }
