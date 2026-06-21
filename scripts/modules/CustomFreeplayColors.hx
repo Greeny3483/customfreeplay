@@ -1,9 +1,18 @@
+import funkin.modding.module.Module;
+import funkin.graphics.FunkinSprite;
+
+import funkin.modding.PolymodErrorHandler;
+import haxe.Json;
 import flixel.FlxG;
 import funkin.ui.freeplay.FreeplayState;
-import funkin.modding.module.Module;
+
 import flixel.util.FlxColor;
 
 class CustomFreeplayColors extends Module {
+    static var jsonPath;
+    static var jsonData:Dynamic;
+    static var songsArray:Array;
+
     var targetPink:FlxColor = 0xFFFFD863;
     var targetMoreWays:FlxColor = 0xFFFFFFFF;
     var targetFunnyScroll:FlxColor = 0xFFFFFFFF;
@@ -12,59 +21,41 @@ class CustomFreeplayColors extends Module {
     var targetOrange:FlxColor = 0xFFFEDA00;
     var currentOrange:FlxColor = 0xFFFEDA00;
 
-    public static var songColors:Map<String, FlxColor> = [
-        "bopeebo" => 0xFFAF66CE,
-        "fresh" => 0xFFAF66CE,
-        "dadbattle" => 0xFFAF66CE,
-        "spookeez" => 0xFFD57E00,
-        "south" => 0xFFD57E00,
-        "monster" => 0xFFB50012,
-        "pico" => 0xFFB7D855,
-        "philly-nice" => 0xFFB7D855,
-        "blammed" => 0xFFB7D855,
-        "satin-panties" => 0xFFD8558E,
-        "high" => 0xFFD8558E,
-        "milf" => 0xFFD8558E,
-        "cocoa" => 0xFFA5004D,
-        "eggnog" => 0xFFA5004D,
-        "winter-horrorland" => 0xFFB50012,
-        "senpai" => 0xFFFFAA6F,
-        "roses" => 0xFFFFAA6F,
-        "thorns" => 0xFFFF3C6E,
-        "ugh" => 0xFFE1E1E1,
-        "guns" => 0xFFE1E1E1,
-        "stress" => 0xFFE1E1E1,
-        "darnell" => 0xFF5A456C,
-        "lit-up" => 0xFF5A456C,
-        "2hot" => 0xFF5A456C,
-        "blazin" => 0xFF5A456C
-    ];
-
-    public function new() {
-        super('CustomFreeplayColors');
+    function new() {
+        super("customFreeplayColors", 30, {state: FreeplayState});
+        jsonPath = Paths.json("ahem");
+        if (Assets.exists(jsonPath)) {
+            jsonData = Json.parse(Assets.getText(jsonPath));
+        }
     }
 
     override function onCapsuleSelected(event:CapsuleScriptEvent):Void {
         super.onCapsuleSelected(event);
         if (event.capsule == null || event.capsule.freeplayData == null) return;
+        if (jsonData == null) return;
 
         var songId = event.capsule.freeplayData.songId;
-        var baseColor:FlxColor = 0xFFFFD863; 
+        var songTitle = event.capsule.freeplayData.data.songName;
+        var baseColor:FlxColor = FlxColor.fromString("#FFFFD863");
 
-        if (songColors.exists(songId)) {
-            baseColor = songColors.get(songId);
+        for (songs in jsonData.songs) {
+            songsArray = songs.songNames;
+            for (curSong in songsArray) {
+                if (songsArray.contains(songId) || songsArray.contains(songTitle)) {
+                    // Song's title doesn't work so...
+                    // TODO: Support variations
+                    baseColor = FlxColor.fromString(songs.color);
+                }
+            }
         }
 
         targetPink = baseColor;
         targetMoreWays = FlxColor.interpolate(baseColor, FlxColor.WHITE, 0.6);
-        
+
         targetFunnyScroll = FlxColor.interpolate(baseColor, FlxColor.WHITE, 0.2);
-        
-        if (baseColor.lightness > 0.6) {
-            targetFunnyScroll2 = FlxColor.interpolate(baseColor, FlxColor.BLACK, 0.55);
-        } else {
-            targetFunnyScroll2 = FlxColor.interpolate(baseColor, FlxColor.WHITE, 0.6);
-        }
+
+        if (baseColor.lightness > 0.6) targetFunnyScroll2 = FlxColor.interpolate(baseColor, FlxColor.BLACK, 0.55);
+        else targetFunnyScroll2 = FlxColor.interpolate(baseColor, FlxColor.WHITE, 0.6);
 
         targetFunnyScroll3 = FlxColor.interpolate(baseColor, FlxColor.BLACK, 0.4);
         targetOrange = FlxColor.interpolate(baseColor, FlxColor.BLACK, 0.2);
@@ -73,7 +64,7 @@ class CustomFreeplayColors extends Module {
     override function onUpdate(event:UpdateScriptEvent):Void {
         super.onUpdate(event);
         if (FlxG.state.subState == null || FlxG.state.subState.backingCard == null) return;
-        
+
         var card = FlxG.state.subState.backingCard;
         var lerpSpeed:Float = event.elapsed * 6.0;
 
@@ -96,7 +87,7 @@ class CustomFreeplayColors extends Module {
                 card.moreWays2.funnyColor = FlxColor.interpolate(startColor2, targetMoreWays, lerpSpeed);
             }
         } catch(e:Dynamic) {}
-        
+
         try {
             if (card.funnyScroll != null) {
                 var scrollStart = card.funnyScroll.funnyColor != null ? card.funnyScroll.funnyColor : FlxColor.WHITE;
@@ -110,7 +101,7 @@ class CustomFreeplayColors extends Module {
                 card.funnyScroll2.funnyColor = FlxColor.interpolate(scrollStart2, targetFunnyScroll2, lerpSpeed);
             }
         } catch(e:Dynamic) {}
-        
+
         try {
             if (card.funnyScroll3 != null) {
                 var scrollStart3 = card.funnyScroll3.funnyColor != null ? card.funnyScroll3.funnyColor : FlxColor.WHITE;

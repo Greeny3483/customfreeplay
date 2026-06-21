@@ -1,0 +1,214 @@
+{
+  "songs": [
+    {
+      "songNames": ["bopeebo", "fresh", "dadbattle"],
+      "color": "#AF66CE",
+      "image": "freeplayBGweek1-bf"
+    },
+    {
+      "songNames": ["spookeez", "south"],
+      "color": "#D57E00",
+      "image": "freeplayBG-week2"
+    },
+    {
+      "songNames": ["monster"],
+      "color": "#B50012",
+      "image": "freeplayBG-monster"
+    },
+    {
+      "songNames": ["pico", "philly-nice", "blammed"],
+      "color": "#B7D855",
+      "image": "freeplayBG-week3"
+    },
+    {
+      "songNames": ["satin-panties", "high", "milf"],
+      "color": "#D8558E",
+      "image": "freeplayBG-week4"
+    },
+    {
+      "songNames": ["cocoa", "eggnog"],
+      "color": "#A5004D",
+      "image": "freeplayBG-week5"
+    },
+    {
+      "songNames": ["winter-horrorland"],
+      "color": "#B50012",
+      "image": "freeplayBG-monster2"
+    },
+    {
+      "songNames": ["senpai", "roses", "thorns"],
+      "color": "#FFAA6F",
+      "image": "freeplayBG-week6"
+    },
+    {
+      "songNames": ["ugh", "guns", "stress"],
+      "color": "#E1E1E1",
+      "image": "freeplayBG-week7"
+    },
+    {
+      "songNames": ["darnell", "lit-up", "2hot", "blazin"],
+      "color": "#5A456C",
+      "image": "freeplayBG-weekend1"
+    },
+    {
+      "songNames": ["Blammed Erect", "Blammed (Pico Mix)"],
+      "color": "#abd824",
+      "image": "freeplayBGweek1-bf"
+    },
+    {
+      "songNames": ["too-slow"],
+      "color": "#FF1930",
+      "image": "freeplayBG-too-slow"
+    },
+    {
+      "songNames": ["you-cant-run"],
+      "color": "#FF1930",
+      "image": "freeplayBG-you-cant-run"
+    },
+    {
+      "songNames": ["triple-trouble"],
+      "color": "#FF1930",
+      "image": "freeplayBG-triple-trouble"
+    },
+    {
+      "songNames": ["final-escape"],
+      "color": "#FF1930",
+      "image": "freeplayBG-final-escape"
+    },
+    {
+      "songNames": ["cycles"],
+      "color": "#A8000E",
+      "image": "freeplayBG-cycles"
+    },
+    {
+      "songNames": ["endless"],
+      "color": "#00E5FF",
+      "image": "freeplayBG-endless"
+    },
+    {
+      "songNames": ["milk"],
+      "color": "#00E5FF",
+      "image": "freeplayBG-milk"
+    },
+    {
+      "songNames": ["faker"],
+      "color": "#FF1930",
+      "image": "freeplayBG-faker"
+    },
+    {
+      "songNames": ["black-sun"],
+      "color": "#004CB0",
+      "image": "freeplayBG-black-sun"
+    },
+    {
+      "songNames": ["too-fest"],
+      "color": "#00AEFF",
+      "image": "freeplayBG-too-fest"
+    },
+    {
+      "songNames": ["sunshine"],
+      "color": "#FF9D2E",
+      "image": "freeplayBG-sunshine"
+    },
+    {
+      "songNames": ["soulless"],
+      "color": "#FF9D2E",
+      "image": "freeplayBG-soulless"
+    },
+    {
+      "songNames": ["chaos"],
+      "color": "#FFE138",
+      "image": "freeplayBG-chaos"
+    },
+    {
+      "songNames": ["prey"],
+      "color": "#822727",
+      "image": "freeplayBG-prey"
+    },
+    {
+      "songNames": ["fight-or-flight"],
+      "color": "#822727",
+      "image": "freeplayBG-fight-or-flight"
+    },
+    {
+      "songNames": ["round-a-bout"],
+      "color": "#BE4DFF",
+      "image": "freeplayBG-round-a-bout"
+    },
+    {
+      "songNames": ["fatality"],
+      "color": "#FF0000",
+      "image": "freeplayBG-fatality"
+    },
+    {
+      "songNames": ["substantial"],
+      "color": "#5500FF",
+      "image": "freeplayBG-substantial"
+    },
+    {
+      "songNames": ["execution"],
+      "color": "#A8000E",
+      "image": "freeplayBG-cycles"
+    },
+    {
+      "songNames": ["endless-og"],
+      "color": "#000C94",
+      "image": "freeplayBG-endless"
+    },
+    {
+      "songNames": ["milk-og"],
+      "color": "#00E5FF",
+      "image": "freeplayBG-milk"
+    },
+    {
+      "songNames": ["slaybells"],
+      "color": "#FC037F",
+      "image": "freeplayBG-slaybells"
+    },
+    {
+      "songNames": ["relax", "spike-trap"],
+      "color": "#BE4DFF",
+      "image": "freeplayBG-round-a-bout"
+    },
+    {
+      "songNames": ["personnel-serious"],
+      "color": "#AC63FF",
+      "image": "freeplayBG-personnel"
+    },
+    {
+      "songNames": ["headache", "nerves", "release", "fading"],
+      "color": "#42F575",
+      "image": "freeplayBG-weekg"
+    },
+    {
+      "songNames": ["good-enough", "lover", "tug-of-war"],
+      "color": "#FF034A",
+      "image": "freeplayBG-annie"
+    },
+    {
+      "songNames": ["take-a-swig-of-this", "animal"],
+      "color": "#30BAFF",
+      "image": "freeplayBG-liquidannie"
+    },
+    {
+      "songNames": ["drowning"],
+      "color": "#AF66CE",
+      "image": "freeplayBG-drowning"
+    },
+    {
+      "songNames": ["dilemma"],
+      "color": "#42F575",
+      "image": "freeplayBG-dilemma"
+    },
+    {
+      "songNames": ["tone-it-down"],
+      "color": "#FF034A",
+      "image": "freeplayBG-toneitdown"
+    },
+    {
+      "songNames": ["headache-minus", "nerves-minus", "release-minus"],
+      "color": "#42F575",
+      "image": "freeplayBG-weekgminus"
+    }
+  ]
+}
