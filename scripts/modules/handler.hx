@@ -25,8 +25,10 @@ import funkin.ui.freeplay.FreeplayState;
 import flixel.util.FlxColor;
 
 class Ahem extends Module {
-    public var jsonPath; // looks for the json file in the data folder
-    public var jsonData:Dynamic; // Shortcut for Json.parse(Assets.getText(jsonPath))
+    static var jsonPath;
+    static var jsonData:Dynamic;
+    static var songsArray:Array;
+
     var targetPink:FlxColor = 0xFFFFD863;
     var targetMoreWays:FlxColor = 0xFFFFFFFF;
     var targetFunnyScroll:FlxColor = 0xFFFFFFFF;
@@ -63,21 +65,8 @@ class Ahem extends Module {
         "blazin" => 0xFF5A456C
     ];
 
-    /*
-     * JSON file look:
-     {
-     "songs": [
-        {
-            "songName": "",
-            "color": "",
-            "image": ""
-        }
-     ]
-     }
-     */
-
     function new() {
-        super("ScopedModule_MainmenuState", 30, {state: FreeplayState});
+        super("ahem", 30, {state: FreeplayState});
         jsonPath = Paths.json("ahem");
         if (Assets.exists(jsonPath)) {
             jsonData = Json.parse(Assets.getText(jsonPath));
@@ -100,26 +89,31 @@ class Ahem extends Module {
     override function onCapsuleSelected(event:CapsuleScriptEvent):Void {
         super.onCapsuleSelected(event);
         if (event.capsule == null || event.capsule.freeplayData == null) return;
+        if (jsonData == null) return;
+
         var songId = event.capsule.freeplayData.songId;
-        //var baseColor:FlxColor = 0xFFFFD863;
+        var songTitle = event.capsule.freeplayData.data.songName;
         var baseColor:FlxColor = FlxColor.fromString("#FFFFD863");
 
-        for (song in jsonData.songs) {
-            if (song.songName == event.capsule.freeplayData.songId) {
-                //baseColor = song.color;
-                baseColor = FlxColor.fromString(song.color);
+        for (songs in jsonData.songs) {
+            songsArray = songs.songNames;
+            for (curSong in songsArray) {
+                if (songsArray.contains(songId) || songsArray.contains(songTitle)) {
+                    baseColor = FlxColor.fromString(songs.color);
+                }
             }
-            targetPink = baseColor;
-            targetMoreWays = FlxColor.interpolate(FlxColor.fromString(baseColor), FlxColor.WHITE, 0.6);
-
-            targetFunnyScroll = FlxColor.interpolate(FlxColor.fromString(baseColor), FlxColor.WHITE, 0.2);
-
-            if (baseColor.lightness > 0.6) targetFunnyScroll2 = FlxColor.interpolate(FlxColor.fromString(baseColor), FlxColor.BLACK, 0.55);
-            else targetFunnyScroll2 = FlxColor.interpolate(FlxColor.fromString(baseColor), FlxColor.WHITE, 0.6);
-
-            targetFunnyScroll3 = FlxColor.interpolate(FlxColor.fromString(baseColor), FlxColor.BLACK, 0.4);
-            targetOrange = FlxColor.interpolate(FlxColor.fromString(baseColor), FlxColor.BLACK, 0.2);
         }
+
+        targetPink = baseColor;
+        targetMoreWays = FlxColor.interpolate(baseColor, FlxColor.WHITE, 0.6);
+
+        targetFunnyScroll = FlxColor.interpolate(baseColor, FlxColor.WHITE, 0.2);
+
+        if (baseColor.lightness > 0.6) targetFunnyScroll2 = FlxColor.interpolate(baseColor, FlxColor.BLACK, 0.55);
+        else targetFunnyScroll2 = FlxColor.interpolate(baseColor, FlxColor.WHITE, 0.6);
+
+        targetFunnyScroll3 = FlxColor.interpolate(baseColor, FlxColor.BLACK, 0.4);
+        targetOrange = FlxColor.interpolate(baseColor, FlxColor.BLACK, 0.2);
     }
 
     override function onUpdate(event:UpdateScriptEvent):Void {

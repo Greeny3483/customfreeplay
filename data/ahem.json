@@ -1,29 +1,14 @@
 {
-    "songs": [
-        {
-            "songName": "bopeebo",
-            "color": "#AF66CE",
-            "image": ""
-        },
-        {
-            "songName": "fresh",
-            "color": "#AF66CE",
-            "image": ""
-        },
-        {
-            "songName": "dadbattle",
-            "color": "#AF66CE",
-            "image": ""
-        },
-        {
-            "songName": "spookeez",
-            "color": "#D57E00",
-            "image": ""
-        },
-        {
-            "songName": "south",
-            "color": "#D57E00",
-            "image": ""
-        }
-    ]
+  "songs": [
+    {
+      "songNames": ["bopeebo", "fresh", "dadbattle"],
+      "color": "#AF66CE",
+      "image": "freeplayBGweek1-bf"
+    },
+    {
+      "songNames": ["spookeez", "south"],
+      "color": "#D57E00",
+      "image": "freeplayBG-week2"
+    }
+  ]
 }
