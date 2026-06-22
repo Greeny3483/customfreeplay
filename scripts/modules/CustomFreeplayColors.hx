@@ -54,7 +54,7 @@ class CustomFreeplayColors extends Module {
 
         targetFunnyScroll = FlxColor.interpolate(baseColor, FlxColor.WHITE, 0.2);
 
-        if (baseColor.lightness > 0.6) targetFunnyScroll2 = FlxColor.interpolate(baseColor, FlxColor.BLACK, 0.55);
+        if (baseColor?.lightness > 0.6) targetFunnyScroll2 = FlxColor.interpolate(baseColor, FlxColor.BLACK, 0.55);
         else targetFunnyScroll2 = FlxColor.interpolate(baseColor, FlxColor.WHITE, 0.6);
 
         targetFunnyScroll3 = FlxColor.interpolate(baseColor, FlxColor.BLACK, 0.4);
